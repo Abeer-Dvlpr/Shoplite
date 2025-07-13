@@ -9,8 +9,7 @@ import LatestPosts from "../Components/LatestPost";
 import BrandsSlider from "../Components/BrandsSlider";
 import Footer from "../Components/Footer";
 import AppleShowcase from "../Components/Apple";
-import HeroSlider from "../Components/Heroslider";
-
+import HeroSlider from "../Components/HeroSlider";
 
 
 function Home() {

@@ -14,12 +14,12 @@ const CustomerReview = () => {
   const cardsRef = useRef([]);
   const [visibleSlides, setVisibleSlides] = useState(4);
   const Reviews = [
-    { id: 1, name: "Tony Stark", message: "“I stumbled upon this tech store while searching for a new laptop, ”" },
-    { id: 2, name: "Steve Rogers", message: "“I recently purchased wireless earbuds from this store, and I must say, ”" },
-    { id: 3, name: "Ethan", message: "“I ordered a smartwatch from this online store, and I'm beyond impressed! The delivery was super fast, and the Reviews quality is outstanding. It works perfectly with my phone, and I love all the features. Highly recommend this store to everyone!”" },
-    { id: 4, name: "Stephen Strange", message: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”" },
-    { id: 5, name: "Peter Parker", message: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”" },
-    { id: 6, name: "Thor", message: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”" },
+    { id: 1, name: "Tony Stark", message: "Amazing tech store! Found exactly what I needed." },
+    { id: 2, name: "Steve Rogers", message: "Great wireless earbuds, excellent quality!" },
+    { id: 3, name: "Ethan", message: "Fast delivery, outstanding quality. Highly recommend!" },
+    { id: 4, name: "Stephen Strange", message: "Knowledgeable staff, perfect device selection." },
+    { id: 5, name: "Peter Parker", message: "Best tech store experience ever!" },
+    { id: 6, name: "Thor", message: "Excellent service and quality products." },
   ];
 
   useGSAP(() => {
