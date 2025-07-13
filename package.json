@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Abeer-Dvlpr.github.io/Shoplite",
+"homepage": "https://abeer-dvlpr.github.io/Shoplite",
 "scripts": {
   "dev": "vite",
   "build": "vite build",
