@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaGreaterThan, FaLessThan } from "react-icons/fa";
-import Hproducts from "../Data/home";
+import Hproducts from "../Data/Home";
 
 gsap.registerPlugin(ScrollTrigger);
 
