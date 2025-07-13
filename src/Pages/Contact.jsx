@@ -2,7 +2,6 @@ import React, {  useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import IMG from "../Images/Contact.png"
 import PageHeader from '../Components/PageHeader';
 import CustomerReview from '../Components/CustomerReview';
 import LatestPosts from '../Components/LatestPost';
@@ -100,7 +99,7 @@ const Contact = () => {
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {/* Image */}
         <div>
-          <img src={IMG} alt="Contact" className="rounded-lg h-[34rem] w-full" />
+          <img src="/Images/Contact.png" alt="Contact" className="rounded-lg h-[34rem] w-full" />
         </div>
 
         {/* Store Info */}

@@ -1,25 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Camera from "../Images/Sider-Camera.png";
-import Samsung from "../Images/Galaxy-S25-Ultra-Titanium-Gray-Smartphone-Samsung-Flagship.png"
-import Laptop from "../Images/laptop.png"
 
 const slides = [
   {
     title: "Samsung Galaxy S25 Ultra",
     desc: "The game changer mobile with high quailty camera.",
-    img: Samsung,
+    img: "/Images/Galaxy-S25-Ultra-Titanium-Gray-Smartphone-Samsung-Flagship.png",
   },
   {
     title: "Honor Magic Book 16x",
     desc: "The best quaility laptop with low price and high performace.",
-    img: Laptop,
+    img: "/Images/laptop.png",
   },
   {
     title: "BEST DSLR CAMERA",
     desc: "Capture your moments in HD quality!",
-    img: Camera,
+    img: "/Images/Sider-Camera.png",
   },
 ];
 

@@ -3,11 +3,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import Mac from "../Images/LatestPost/Mac.png";
-import Iphone from "../Images/LatestPost/Iphone.png";
-import Laptop from "../Images/LatestPost/Laptop.png";
-import Watch from "../Images/LatestPost/Watch.png";
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,28 +13,28 @@ const LatestPosts = () => {
       category: "Gadgets",
       title: "5 Must-Have Gadgets for the Modern Home",
       desc: "Dive into the world of cutting-edge technology with our latest blog post, where we highlight five essential gadgets for the modern lifestyle.",
-      img: Mac,
+      img: "/Images/LatestPost/Mac.png",
     },
     {
       id: 2,
       category: "Phones",
       title: "Eco-Friendly Innovations Making a Difference",
       desc: "Explore the intersection of technology and sustainability in our latest blog post. Learn about the innovative eco-friendly solutions reshaping the tech industry.",
-      img: Iphone,
+      img: "/Images/LatestPost/Iphone.png",
     },
     {
       id: 3,
       category: "Tech",
       title: "The Future of Wearable Tech: Trends to Watch",
       desc: "Stay ahead of the curve with our insightful look into the rapidly evolving landscape of wearable technology. Explore emerging trends and exciting advancements.",
-      img: Laptop,
+      img: "/Images/LatestPost/Laptop.png",
     },
     {
       id: 4,
       category: "Digital Watch",
       title: "Top Apps and Tools for Remote Work",
       desc: "In today's remote work environment, productivity is key. Discover the top apps and tools that can help you stay connected, organized, and efficient.",
-      img: Watch,
+      img: "/Images/LatestPost/Watch.png",
     },
   ];
 

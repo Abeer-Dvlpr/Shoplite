@@ -2,11 +2,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Laptop from "../Images/CategoriesIMG/Laptop.png";
-import Joysticks from "../Images/CategoriesIMG/Joysticks.png";
-import Phone from "../Images/CategoriesIMG/Phone.png";
-import Watch from "../Images/CategoriesIMG/Watch.png";
-import AirPods from "../Images/CategoriesIMG/Airpods.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,11 +9,11 @@ const Categories = () => {
     const containerRef = useRef(null);
 
     const products = [
-        { id: 1, Categories: "Laptop", price: "$870", image: Laptop },
-        { id: 2, Categories: "Joysticks", price: "$600", image: Joysticks },
-        { id: 3, Categories: "Phone", price: "$400", image: Phone },
-        { id: 4, Categories: "Air Pods", price: "$2000", image: AirPods },
-        { id: 5, Categories: "Watch", price: "$75", image: Watch },
+        { id: 1, Categories: "Laptop", price: "$870", image: "/Images/CategoriesIMG/Laptop.png" },
+        { id: 2, Categories: "Joysticks", price: "$600", image: "/Images/CategoriesIMG/Joysticks.png" },
+        { id: 3, Categories: "Phone", price: "$400", image: "/Images/CategoriesIMG/Phone.png" },
+        { id: 4, Categories: "Air Pods", price: "$2000", image: "/Images/CategoriesIMG/Airpods.png" },
+        { id: 5, Categories: "Watch", price: "$75", image: "/Images/CategoriesIMG/Watch.png" },
     ];
 
     useGSAP(() => {

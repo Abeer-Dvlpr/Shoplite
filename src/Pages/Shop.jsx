@@ -1,17 +1,6 @@
 import CategoriesSidebar from "../Components/CategoriesSide";
 import PageHeader from "../Components/PageHeader";
 import ProductsGrid from "../Components/ProductsGrid";
-// import Mac from "../Images/ShopIMG/Iphone.png"
-// import Drone from "../Images/ShopIMG/Drone.png"
-// import Applewatch from "../Images/ShopIMG/Watch.png"
-// import Monitor from "../Images/ShopIMG/Monitor.png"
-// import highspe from "../Images/ShopIMG/Highspeaker.png"
-// import Watch from "../Images/ShopIMG/sWatch.png"
-// import Applelaptop from "../Images/ShopIMG/Mac.png"
-// import Headphone from "../Images/ShopIMG/Headphone.png"
-// import Airpod from "../Images/ShopIMG/Airpods.png"
-// import bluspeaker from "../Images/ShopIMG/Bluspeaker.png"
-// import laptop from "../Images/ShopIMG/Applelaptop.png"
 import CustomerReview from "../Components/CustomerReview";
 import BrandsSlider from "../Components/BrandsSlider";
 import LatestPosts from "../Components/LatestPost";

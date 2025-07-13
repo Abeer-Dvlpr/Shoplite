@@ -2,11 +2,6 @@ import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Apple from "../Images/InstagramShoplite/one.png";
-import Watch from "../Images/InstagramShoplite/two.png";
-import Airpod from "../Images/InstagramShoplite/three.png";
-import Mobile from "../Images/InstagramShoplite/four.png";
-import Laptop from "../Images/InstagramShoplite/six.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,11 +9,11 @@ const AppleShowcase = () => {
   const rowRef = useRef(null);
 
   const products = [
-    { img: Apple, alt: "MacBook Pro" },
-    { img: Watch, alt: "iPad Pro" },
-    { img: Airpod, alt: "iPhone" },
-    { img: Mobile, alt: "Apple Watch" },
-    { img: Laptop, alt: "AirPods" },
+    { img: "/Images/InstagramShoplite/one.png", alt: "MacBook Pro" },
+    { img: "/Images/InstagramShoplite/two.png", alt: "iPad Pro" },
+    { img: "/Images/InstagramShoplite/three.png", alt: "iPhone" },
+    { img: "/Images/InstagramShoplite/four.png", alt: "Apple Watch" },
+    { img: "/Images/InstagramShoplite/six.png", alt: "AirPods" },
   ];
 
   useGSAP(() => {

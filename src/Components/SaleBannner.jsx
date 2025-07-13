@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AppleIMG from "../Images/SaleBannnerIMG/AppleIMG.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,7 +84,7 @@ const AppleSaleBanner = () => {
         <div className="flex justify-center">
           <img
             ref={imageRef}
-            src={AppleIMG}
+            src="/Images/SaleBannnerIMG/AppleIMG.png"
             alt="Apple Collection"
             className="w-80 md:w-full"
           />

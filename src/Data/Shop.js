@@ -1,28 +1,13 @@
 
-import Drone from "../Images/ShopIMG/Drone.png"
-import Applewatch from "../Images/ShopIMG/Watch.png"
-import Monitor from "../Images/ShopIMG/Monitor.png"
-import Mac from "../Images/ShopIMG/Mac.png"
-// import highspe from "../Images/ShopIMG/Highspeaker.png"
-// import Watch from "../Images/ShopIMG/sWatch.png"
-// import Applelaptop from "../Images/ShopIMG/Mac.png"
-import Headphone from "../Images/ShopIMG/Headphone.png"
-// import Airpod from "../Images/ShopIMG/Airpods.png"
-import bluspeaker from "../Images/ShopIMG/Bluspeaker.png"
-// import laptop from "../Images/ShopIMG/Applelaptop.png"
-
-
-
-
 
 const Sproduct = [
   {
     id: "Mac",
     name: "Mac book Pro",
-    IMG: Mac,
+    IMG: "/Images/ShopIMG/Mac.png",
     price: 2000,
     stock: 2,
-    images: [Mac, Mac, Mac],
+    images: ["/Images/ShopIMG/Mac.png", "/Images/ShopIMG/Mac.png", "/Images/ShopIMG/Mac.png"],
     colors: ["Orange", "Green", "Blue", "Black"],
     sizes: ["XL", "L", "M", "S"],
     sku: "1223",
@@ -58,8 +43,8 @@ const Sproduct = [
     name: "iPhone 16 Pro Max",
     price: 2100,
     stock: 2,
-    IMG:Drone,
-    images: [Drone, Drone,Drone ],
+    IMG: "/Images/ShopIMG/Drone.png",
+    images: ["/Images/ShopIMG/Drone.png", "/Images/ShopIMG/Drone.png", "/Images/ShopIMG/Drone.png"],
     colors: ["Orange", "Green", "Blue", "Black"],
     sizes: ["XL", "L", "M", "S"],
     sku: "1224",
@@ -80,8 +65,8 @@ const Sproduct = [
     name: "Apple Watch 17",
     price: 2200,
     stock: 3,
-    IMG:Applewatch,
-    images: [Applewatch, Applewatch, Applewatch],
+    IMG: "/Images/ShopIMG/Applewatch.png",
+    images: ["/Images/ShopIMG/Applewatch.png", "/Images/ShopIMG/Applewatch.png", "/Images/ShopIMG/Applewatch.png"],
     colors: ["Red", "Black", "Silver"],
     sizes: ["128GB", "256GB", "512GB"],
     sku: "1225",
@@ -102,8 +87,8 @@ const Sproduct = [
     name: "Monitor HD",
     price: 2300,
     stock: 4,
-    IMG:Monitor,
-    images: [Monitor, Monitor, Monitor],
+    IMG: "/Images/ShopIMG/Monitor.png",
+    images: ["/Images/ShopIMG/Monitor.png", "/Images/ShopIMG/Monitor.png", "/Images/ShopIMG/Monitor.png"],
     colors: ["White", "Blue", "Gold"],
     sizes: ["128GB", "256GB", "512GB"],
     sku: "1226",
@@ -124,8 +109,8 @@ const Sproduct = [
     name: "Best Headphone",
     price: 600,
     stock: 3,
-    IMG:Headphone,
-    images: [Headphone, Headphone, Headphone],
+    IMG: "/Images/ShopIMG/Headphone.png",
+    images: ["/Images/ShopIMG/Headphone.png", "/Images/ShopIMG/Headphone.png", "/Images/ShopIMG/Headphone.png"],
     colors: ["White", "Blue", "Gold"],
     sizes: ["128GB", "256GB", "512GB"],
     sku: "1226",
@@ -146,8 +131,8 @@ const Sproduct = [
     name: "Blutooth Speaker",
     price: 900,
     stock: 1,
-    IMG:bluspeaker,
-    images: [bluspeaker, bluspeaker, bluspeaker],
+    IMG: "/Images/ShopIMG/Bluspeaker.png",
+    images: ["/Images/ShopIMG/Bluspeaker.png", "/Images/ShopIMG/Bluspeaker.png", "/Images/ShopIMG/Bluspeaker.png"],
     colors: ["White", "Blue", "Gold"],
     sizes: ["128GB", "256GB", "512GB"],
     sku: "1226",

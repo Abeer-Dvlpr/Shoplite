@@ -2,18 +2,6 @@ import {  useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Headphone from "../Images/ListsItemIMG/Headphone.png";
-import Iphone from "../Images/ListsItemIMG/Iphone x.png";
-import Phone from "../Images/ListsItemIMG/Phone.png";
-import Airpod from "../Images/ListsItemIMG/Airpod.png";
-import CCTVCamera from "../Images/ListsItemIMG/CCTV.png";
-import Digitalwatch from "../Images/ListsItemIMG/Digitalwatch.png";
-import Iphone15 from "../Images/ListsItemIMG/Iphone15.png";
-import Joystcks from "../Images/ListsItemIMG/Joysticks.png";
-import Pad from "../Images/ListsItemIMG/Pad.png";
-import Vlogingstand from "../Images/ListsItemIMG/Vlogingstand.png";
-import Watch from "../Images/ListsItemIMG/Watch.png";
-import Whitepods from "../Images/ListsItemIMG/Whitepods.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,33 +12,33 @@ const ListsItem = () => {
     {
       title: "FEATURED",
       products: [
-        { id: 1, name: "Wireless Headset", price: "$500", image: Headphone },
-        { id: 2, name: "Iphone X Pro Max", price: "$820", image: Iphone },
-        { id: 3, name: "Smart Phone", price: "$660", image: Phone },
+        { id: 1, name: "Wireless Headset", price: "$500", image: "/Images/ListsItemIMG/Headphone.png" },
+        { id: 2, name: "Iphone X Pro Max", price: "$820", image: "/Images/ListsItemIMG/Iphone x.png" },
+        { id: 3, name: "Smart Phone", price: "$660", image: "/Images/ListsItemIMG/Phone.png" },
       ],
     },
     {
       title: "LATEST ITEMS",
       products: [
-        { id: 4, name: "Bluetooth Earbuds", price: "$120", image: Airpod },
-        { id: 5, name: "Gaming Console", price: "$950", image: Joystcks },
-        { id: 6, name: "4K Smart TV", price: "$2000", image: Pad },
+        { id: 4, name: "Bluetooth Earbuds", price: "$120", image: "/Images/ListsItemIMG/Airpod.png" },
+        { id: 5, name: "Gaming Console", price: "$950", image: "/Images/ListsItemIMG/Joysticks.png" },
+        { id: 6, name: "4K Smart TV", price: "$2000", image: "/Images/ListsItemIMG/Pad.png" },
       ],
     },
     {
       title: "BEST REVIEWED",
       products: [
-        { id: 7, name: "Best CCTV Camera", price: "$700", image: CCTVCamera },
-        { id: 8, name: "iPhone 15 Pro", price: "$1100", image: Iphone15 },
-        { id: 9, name: "Latest Digital Watch", price: "$850", image: Digitalwatch },
+        { id: 7, name: "Best CCTV Camera", price: "$700", image: "/Images/ListsItemIMG/CCTV.png" },
+        { id: 8, name: "iPhone 15 Pro", price: "$1100", image: "/Images/ListsItemIMG/Iphone15.png" },
+        { id: 9, name: "Latest Digital Watch", price: "$850", image: "/Images/ListsItemIMG/Digitalwatch.png" },
       ],
     },
     {
       title: "ON SALE",
       products: [
-        { id: 10, name: "Best Apple White Pods", price: "$1100", image: Whitepods },
-        { id: 11, name: "Noise Cancelling Headphones", price: "$700", image: Watch },
-        { id: 12, name: "Latest Vloging Stand", price: "$850", image: Vlogingstand },
+        { id: 10, name: "Best Apple White Pods", price: "$1100", image: "/Images/ListsItemIMG/Whitepods.png" },
+        { id: 11, name: "Noise Cancelling Headphones", price: "$700", image: "/Images/ListsItemIMG/Watch.png" },
+        { id: 12, name: "Latest Vloging Stand", price: "$850", image: "/Images/ListsItemIMG/Vlogingstand.png" },
       ],
     },
   ];
