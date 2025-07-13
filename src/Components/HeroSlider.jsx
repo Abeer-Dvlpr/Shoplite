@@ -68,10 +68,12 @@ useEffect(() => {
     <div className="relative w-full min-h-[80vh] bg-[#f9f9f9] flex flex-col md:flex-col-reverse lg:flex-col-reverse items-center justify-center xl:flex-row">
       {/* Content - now appears first on mobile */}
       <div 
+
+      
         ref={contentRef} 
-        className="text-center mb-[2rem] md:text-start z-10 order-2 md:order-1 mt-8 md:mt-0 mr-[4rem] xl:-mb-20"
+        className="text-center mb-[2rem] md:text-start z-10 order-2 md:order-1 mt-8 md:mt-0 px-4 md:px-0"
       >
-        <h2 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl  font-bold text-[#272727] mb-4">
+        <h2 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-[#272727] mb-4">
           {slides[current].title}
         </h2>
         <p className="text-gray-600 mb-6 text-sm md:text-base">
@@ -83,30 +85,29 @@ useEffect(() => {
       </div>
 
       {/* Image - now appears second on mobile */}
-      <div className="order-1 lg:order-2">
+      <div className="order-1 lg:order-2 flex justify-center">
         <img
           ref={imageRef}
           src={slides[current].img}
           alt="Product"
-          className="w-[250px] md:w-[400px] h-auto object-contain rounded-full "
+          className="w-[250px] md:w-[400px] h-auto object-contain rounded-full"
         />
       </div>
 
       {/* Arrows - positioned differently on mobile */}
-  <button
-  onClick={prevSlide}
-  className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black bg-white shadow p-3 rounded"
->
-  <FaArrowLeft />
-</button>
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black bg-white shadow p-3 rounded"
+      >
+        <FaArrowLeft />
+      </button>
 
-<button
-  onClick={nextSlide}
-  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black bg-white shadow p-3 rounded"
->
-  <FaArrowRight />
-</button>
-
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black bg-white shadow p-3 rounded"
+      >
+        <FaArrowRight />
+      </button>
     </div>
   );
 }
