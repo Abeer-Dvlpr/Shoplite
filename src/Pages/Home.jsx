@@ -1,4 +1,4 @@
-import HeroSlider from "../Components/HeroSlider";
+
 import Services from "../Components/Services";
 import ProductSlider from "../Components/ProdutSlider";
 import Categories from "../Components/Categories";
@@ -9,13 +9,14 @@ import LatestPosts from "../Components/LatestPost";
 import BrandsSlider from "../Components/BrandsSlider";
 import Footer from "../Components/Footer";
 import AppleShowcase from "../Components/Apple";
+import HeroSlider from "../Components/Heroslider";
 
 
 
 function Home() {
   return (
     <>
-      <div className="mb-[5rem]">
+      <div className="mb-[5rem] mt-[5rem]">
         <HeroSlider />
       </div>
       <Services />

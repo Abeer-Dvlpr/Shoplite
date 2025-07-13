@@ -14,8 +14,8 @@ const CustomerReview = () => {
   const cardsRef = useRef([]);
   const [visibleSlides, setVisibleSlides] = useState(4);
   const Reviews = [
-    { id: 1, name: "Tony Stark", message: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”" },
-    { id: 2, name: "Steve Rogers", message: "“I recently purchased wireless earbuds from this store, and I must say, the experience exceeded my expectations! The sound quality is phenomenal, and the customer service team was extremely helpful in addressing my questions. I would definitely shop here again!”" },
+    { id: 1, name: "Tony Stark", message: "“I stumbled upon this tech store while searching for a new laptop, ”" },
+    { id: 2, name: "Steve Rogers", message: "“I recently purchased wireless earbuds from this store, and I must say, ”" },
     { id: 3, name: "Ethan", message: "“I ordered a smartwatch from this online store, and I'm beyond impressed! The delivery was super fast, and the Reviews quality is outstanding. It works perfectly with my phone, and I love all the features. Highly recommend this store to everyone!”" },
     { id: 4, name: "Stephen Strange", message: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”" },
     { id: 5, name: "Peter Parker", message: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”" },
