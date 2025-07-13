@@ -68,7 +68,7 @@ const Hproduct = [
     name: "Apple Watch 17",
     price: 2200,
     stock: 3,
-    IMG: "/Images/ShopIMG/Applewatch.png",
+    IMG: "/Images/ShopIMG/Watch.png",
     images: ["/Images/ShopIMG/Applewatch.png", "/Images/ShopIMG/Applewatch.png", "/Images/ShopIMG/Applewatch.png"],
     colors: ["Red", "Black", "Silver"],
     sizes: ["128GB", "256GB", "512GB"],
