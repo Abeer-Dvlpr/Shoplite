@@ -9,7 +9,7 @@
   "build": "vite build",
   "preview": "vite preview",
   "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
+"deploy": "gh-pages -d dist -r https://github.com/Abeer-Dvlpr/Shoplite.git"
 },
   "dependencies": {
     "@gsap/react": "^2.1.2",

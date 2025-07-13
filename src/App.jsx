@@ -5,10 +5,8 @@ import Shop from "./Pages/Shop";
 import { Routes, Route } from "react-router-dom";
 import ProductPage from "./Pages/ProductDetails";
 import Checkout from "./Pages/Checkout";
-
 import ShopLiteCart from "./Pages/Cart";
 import Contact from "./Pages/Contact";
-import Cart from "./Pages/Cart";
 
 
 function App() {

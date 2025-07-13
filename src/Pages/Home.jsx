@@ -1,4 +1,4 @@
-import HeroSlider from "../Components/Heroslider";
+import HeroSlider from "../Components/HeroSlider";
 import Services from "../Components/Services";
 import ProductSlider from "../Components/ProdutSlider";
 import Categories from "../Components/Categories";
