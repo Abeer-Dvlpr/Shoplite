@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Laptop from "../Images/CategoriesIMG/Laptop.png";
 import Joysticks from "../Images/CategoriesIMG/Joysticks.png";
 import Phone from "../Images/CategoriesIMG/Phone.png";
-import Watch from "../Images/CategoriesIMG/watch.png";
+import Watch from "../Images/CategoriesIMG/Watch.png";
 import AirPods from "../Images/CategoriesIMG/Airpods.png";
 
 gsap.registerPlugin(ScrollTrigger);
