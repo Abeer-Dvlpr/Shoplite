@@ -2,7 +2,7 @@ import React, {  useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import IMG from "../Images/Contac.png"
+import IMG from "../Images/Contact.png"
 import PageHeader from '../Components/PageHeader';
 import CustomerReview from '../Components/CustomerReview';
 import LatestPosts from '../Components/LatestPost';
