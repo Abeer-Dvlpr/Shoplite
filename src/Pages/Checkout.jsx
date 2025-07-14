@@ -2,8 +2,17 @@ import {  useRef } from 'react';
 import { gsap } from 'gsap';
 import PageHeader from "../Components/PageHeader";
 import { useGSAP } from '@gsap/react';
+import { useSearchParams } from 'react-router-dom';
+import LatestPosts from '../Components/LatestPost';
+import CustomerReview from '../Components/CustomerReview';
+import BrandsSlider from '../Components/BrandsSlider';
+import AppleShowcase from '../Components/Apple';
+import Footer from '../Components/Footer';
 
 const Checkout = () => {
+  const [searchParams] = useSearchParams();
+  const totalFromCart = searchParams.get('total') || '0.00';
+  const isDirectOrder = searchParams.get('direct_order') === 'true';
   const formRef = useRef(null);
   const totalsRef = useRef(null);
   const headerRef = useRef(null);
@@ -11,6 +20,7 @@ const Checkout = () => {
   const confirmationRef = useRef(null);
 
   useGSAP(() => {
+    // Disable animations temporarily to ensure button visibility
     // Initial animations
     gsap.from(headerRef.current, {
       y: -50,
@@ -28,13 +38,11 @@ const Checkout = () => {
       ease: "back.out(1.2)"
     });
 
-    gsap.from(totalsRef.current.children, {
-      y: 30,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.6,
-      delay: 0.6,
-      ease: "back.out(1.2)"
+    // Ensure button is always visible
+    gsap.set(orderButtonRef.current, {
+      opacity: 1,
+      visibility: 'visible',
+      display: 'block'
     });
 
     // Input focus animations
@@ -70,27 +78,68 @@ const Checkout = () => {
       repeat: 1
     });
     
-    // Show confirmation message
+    // Enhanced confirmation animation
     gsap.to(confirmationRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.5,
-      delay: 0.5,
+      scale: 1.05,
+      duration: 0.6,
+      delay: 0.3,
       ease: "back.out(1.2)"
     });
     
-    // Hide confirmation after 3 seconds
+    // Add success icon animation
+    gsap.fromTo(".success-icon", 
+      { scale: 0, rotation: -180 },
+      { scale: 1, rotation: 0, duration: 0.5, delay: 0.8, ease: "back.out(1.2)" }
+    );
+    
+    // Add confetti effect
+    createConfetti();
+    
+    // Hide confirmation after 4 seconds and redirect
     setTimeout(() => {
       gsap.to(confirmationRef.current, {
         opacity: 0,
         y: 20,
-        duration: 0.3
+        scale: 0.95,
+        duration: 0.4
       });
-    }, 3000);
+      
+      // Redirect to home page after animation
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 500);
+    }, 4000);
+  };
+
+  const createConfetti = () => {
+    const colors = ['#FF6543', '#4CAF50', '#2196F3', '#FF9800', '#9C27B0'];
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'fixed';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.top = '-10px';
+      confetti.style.width = '10px';
+      confetti.style.height = '10px';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.borderRadius = '50%';
+      confetti.style.pointerEvents = 'none';
+      confetti.style.zIndex = '9999';
+      document.body.appendChild(confetti);
+      
+      gsap.to(confetti, {
+        y: window.innerHeight + 10,
+        rotation: Math.random() * 360,
+        duration: 3 + Math.random() * 2,
+        ease: "power1.out",
+        onComplete: () => confetti.remove()
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 lg:px-40">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-10 px-2 sm:px-4 lg:px-40">
       <div ref={headerRef}>
         <PageHeader 
           title="CHECKOUT" 
@@ -98,15 +147,21 @@ const Checkout = () => {
           previousPageLink="/Shop" 
           currentPage="Checkout" 
         />
+        {isDirectOrder && (
+          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-800 text-center">
+            <p className="font-medium">🎉 Quick Order Mode - Direct from Product!</p>
+            <p className="text-sm mt-1">Your selected product has been added to cart and is ready for checkout.</p>
+          </div>
+        )}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8 justify-center items-start mt-8">
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-8 justify-center items-start mt-4 sm:mt-8">
         {/* Billing Details */}
-        <div className="w-full lg:w-2/3 bg-white rounded-2xl shadow-sm p-6 border border-gray-200">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        <div className="w-full lg:w-2/3 bg-white rounded-2xl shadow-sm p-4 sm:p-6 border border-gray-200">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
             BILLING DETAILS
           </h2>
-          <form ref={formRef} className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form ref={formRef} className="space-y-3 sm:space-y-4 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div className="col-span-1">
               <label className="block text-sm font-medium text-gray-700 mb-1">First name *</label>
               <input 
@@ -190,10 +245,10 @@ const Checkout = () => {
         </div>
 
         {/* Order Summary */}
-        <div className="w-full lg:w-1/3 space-y-6">
+        <div className="w-full lg:w-1/3 space-y-4 sm:space-y-6">
           {/* Additional Info */}
-          <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-200">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">
+          <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-6 border border-gray-200">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
               ADDITIONAL INFORMATION
             </h2>
             <textarea
@@ -203,15 +258,15 @@ const Checkout = () => {
           </div>
 
           {/* Cart Totals */}
-          <div ref={totalsRef} className="bg-white rounded-2xl shadow-sm p-6 border border-gray-200">
-            <h3 className="text-2xl font-bold mb-6 text-gray-800">
+          <div ref={totalsRef} className="bg-white rounded-2xl shadow-sm p-4 sm:p-6 border border-gray-200">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
               ORDER SUMMARY
             </h3>
             
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-gray-200">
                 <span className="font-medium text-gray-700">Subtotal</span>
-                <span className="font-semibold text-gray-800">$2400.00</span>
+                <span className="font-semibold text-gray-800">${totalFromCart}</span>
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-200">
                 <span className="font-medium text-gray-700">Shipping</span>
@@ -219,7 +274,7 @@ const Checkout = () => {
               </div>
               <div className="flex justify-between items-center py-3">
                 <span className="font-bold text-lg text-gray-800">Total</span>
-                <span className="font-bold text-lg text-gray-800">$2400.00</span>
+                <span className="font-bold text-lg text-gray-800">${totalFromCart}</span>
               </div>
             </div>
 
@@ -249,24 +304,34 @@ const Checkout = () => {
             <button 
               ref={orderButtonRef}
               onClick={handlePlaceOrder}
-              className="w-full mt-6 bg-gray-800 text-white py-3 px-4 rounded-lg font-semibold hover:bg-gray-900 transition-all transform hover:scale-[1.01] shadow-md hover:shadow-lg"
+              className="w-full mt-6 bg-[#FF6543] hover:bg-orange-600 text-white py-4 px-6 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02] shadow-lg hover:shadow-xl border-0 relative z-10"
+              style={{ display: 'block', visibility: 'visible', opacity: 1 }}
             >
               PLACE ORDER
             </button>
-
-            {/* Order Confirmation */}
+            
+            
             <div 
               ref={confirmationRef}
-              className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center opacity-0 transform translate-y-5"
+              className="mt-4 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl text-green-800 text-center opacity-0 transform translate-y-5 shadow-lg"
             >
-              <svg className="w-6 h-6 inline-block mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <div className="success-icon mb-3">
+                <svg className="w-12 h-12 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
-              Your order has been placed successfully! We'll send a confirmation email shortly.
+              </div>
+              <h3 className="text-lg font-bold mb-2 text-green-700">Order Placed Successfully!</h3>
+              <p className="text-green-600">Your order has been placed successfully! We'll send a confirmation email shortly.</p>
+              <p className="text-sm text-green-500 mt-2">Redirecting to home page...</p>
             </div>
           </div>
         </div>
       </div>
+      <LatestPosts/>
+      <CustomerReview/>
+      <BrandsSlider/>
+      <AppleShowcase/>
+      <Footer/>
     </div>
   );
 };

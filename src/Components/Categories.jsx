@@ -38,23 +38,22 @@ const Categories = () => {
 
             <div
                 ref={containerRef}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+                className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6"
             >
                 {products.map((product) => (
                     <div
                         key={product.id}
                         className="card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col"
                     >
-                        <div className="w-full h-40 sm:h-48 md:h-56 flex justify-center items-center p-2">
+                        <div className="w-full h-32 sm:h-40 md:h-48 lg:h-56 flex justify-center items-center p-2">
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className="max-h-full object-contain"
+                                className="max-h-full object-contain product-image"
                             />
                         </div>
-                        <div className="p-4 text-center">
-                            <h3 className="text-lg font-semibold mb-2">{product.Categories}</h3>
-                            
+                        <div className="p-3 sm:p-4 text-center">
+                            <h3 className="text-base sm:text-lg font-semibold mb-2">{product.Categories}</h3>
                         </div>
                     </div>
                 ))}

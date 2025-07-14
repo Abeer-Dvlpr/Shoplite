@@ -87,7 +87,7 @@ function Navbar() {
           <li className="hover:text-[#FF6543]"><Link to="/">HOME</Link></li>
           <li className="hover:text-[#FF6543]"><Link to="/About">ABOUT</Link></li>
           <li className="hover:text-[#FF6543]"><Link to="/Shop">SHOP</Link></li>
-          <li className="hover:text-[#FF6543]"><Link to="/Blog">BLOGS</Link></li>
+          <li className="hover:text-[#FF6543]"><Link to="/blogs">BLOGS</Link></li>
           <li className="hover:text-[#FF6543]"><Link to="/Checkout">PAGES</Link></li>
           <li className="hover:text-[#FF6543]"><Link to="/Contact">CONTACT</Link></li>
         </ul>
@@ -146,7 +146,7 @@ function Navbar() {
           <li><Link to="/" onClick={() => setMenuOpen(false)}>HOME</Link></li>
           <li><Link to="/about" onClick={() => setMenuOpen(false)}>ABOUT</Link></li>
           <li><Link to="/shop" onClick={() => setMenuOpen(false)}>SHOP</Link></li>
-          <li><Link to="/blog" onClick={() => setMenuOpen(false)}>BLOGS</Link></li>
+          <li><Link to="/blogs" onClick={() => setMenuOpen(false)}>BLOGS</Link></li>
           <li><Link to="/cart" onClick={() => setMenuOpen(false)}>CART</Link></li>
           <li><Link to="/contact" onClick={() => setMenuOpen(false)}>CONTACT</Link></li>
         </ul>

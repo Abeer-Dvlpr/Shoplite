@@ -1,42 +1,15 @@
-import { useState, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useState } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 
 const CategoriesSidebar = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedBrand, setSelectedBrand] = useState("All");
   const [searchText, setSearchText] = useState("");
-  const sidebarRef = useRef(null);
-
-  // Simple animation on mount
-  useGSAP(() => {
-    gsap.from(sidebarRef.current, {
-      x: -50,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-    
-    gsap.from(".filter-item", {
-      opacity: 0,
-      y: 20,
-      stagger: 0.1,
-      duration: 0.4,
-      delay: 0.2
-    });
-  }, []);
 
   const categories = ["All", "iPads", "Drones", "Watches", "Ultra HD TVs"];
   const brands = ["All", "Samsung", "Apple", "HP", "Dell", "Honor"];
 
   const handleReset = () => {
-    gsap.to(".filter-item", {
-      color: "#FF6543",
-      duration: 0.2,
-      yoyo: true,
-      repeat: 1
-    });
     setSelectedCategory("All");
     setSelectedBrand("All");
     setSearchText("");
@@ -49,12 +22,12 @@ const CategoriesSidebar = () => {
         <div className="flex items-center bg-white rounded-lg shadow-sm overflow-hidden">
           <input
             type="text"
-            placeholder="Search..."
-            className="px-4 py-2 w-full focus:outline-none"
+            placeholder="Search products..."
+            className="px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#FF6543]"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="p-3 bg-[#FF6543] hover:bg-[#e04d32] transition">
+          <button className="p-3 bg-[#FF6543] hover:bg-[#e04d32] transition-colors">
             <FaSearch className="text-white" />
           </button>
         </div>
@@ -62,20 +35,22 @@ const CategoriesSidebar = () => {
 
       {/* Sidebar */}
       <aside 
-        ref={sidebarRef}
-        className="bg-white p-5 rounded-lg shadow-sm border border-gray-100"
+        className="bg-white p-4 sm:p-5 rounded-lg shadow-sm border border-gray-100 sticky top-4"
       >
         {/* Categories */}
-        <div className="mb-8">
-          <h3 className="text-xl font-medium text-gray-800 mb-3 filter-item">Categories</h3>
-          <ul className="space-y-2">
+        <div className="mb-6">
+          <h3 className="text-lg sm:text-xl font-medium text-gray-800 mb-3 flex items-center">
+            <span className="w-2 h-2 bg-[#FF6543] rounded-full mr-2"></span>
+            Categories
+          </h3>
+          <ul className="space-y-1">
             {categories.map((cat) => (
               <li
                 key={cat}
-                className={`filter-item cursor-pointer p-2 rounded-md transition-all ${
+                className={`cursor-pointer p-2 rounded-md transition-all duration-200 ${
                   selectedCategory === cat 
-                    ? "bg-[#FF6543] text-white font-medium"
-                    : "hover:bg-gray-100 text-gray-600"
+                    ? "bg-[#FF6543] text-white font-medium shadow-md"
+                    : "hover:bg-gray-100 text-gray-600 hover:text-gray-800"
                 }`}
                 onClick={() => setSelectedCategory(cat)}
               >
@@ -86,16 +61,19 @@ const CategoriesSidebar = () => {
         </div>
 
         {/* Brands */}
-        <div className="mb-8">
-          <h3 className="text-xl font-medium text-gray-800 mb-3 filter-item">Brands</h3>
-          <ul className="space-y-2">
+        <div className="mb-6">
+          <h3 className="text-lg sm:text-xl font-medium text-gray-800 mb-3 flex items-center">
+            <span className="w-2 h-2 bg-[#FF6543] rounded-full mr-2"></span>
+            Brands
+          </h3>
+          <ul className="space-y-1">
             {brands.map((brand) => (
               <li
                 key={brand}
-                className={`filter-item cursor-pointer p-2 rounded-md transition-all ${
+                className={`cursor-pointer p-2 rounded-md transition-all duration-200 ${
                   selectedBrand === brand
-                    ? "bg-[#FF6543] text-white font-medium"
-                    : "hover:bg-gray-100 text-gray-600"
+                    ? "bg-[#FF6543] text-white font-medium shadow-md"
+                    : "hover:bg-gray-100 text-gray-600 hover:text-gray-800"
                 }`}
                 onClick={() => setSelectedBrand(brand)}
               >
@@ -108,9 +86,9 @@ const CategoriesSidebar = () => {
         {/* Reset Button */}
         <button
           onClick={handleReset}
-          className="w-full py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition flex items-center justify-center gap-2 filter-item"
+          className="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 font-medium hover:shadow-md"
         >
-          <FaTimes /> Reset Filters
+          <FaTimes className="text-sm" /> Reset Filters
         </button>
       </aside>
     </div>

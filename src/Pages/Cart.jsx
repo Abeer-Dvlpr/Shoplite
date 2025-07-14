@@ -1,12 +1,19 @@
 import React, { useRef } from 'react';
 import { gsap } from 'gsap';
-import { FiShoppingCart, FiX, FiPlus, FiMinus, FiArrowLeft, FiCreditCard } from 'react-icons/fi';
+import { FiShoppingCart, FiX, FiPlus, FiMinus } from 'react-icons/fi';
 import { useCart } from '../Context/CartContext';
 import { useGSAP } from '@gsap/react';
 import PageHeader from "../Components/PageHeader";
+import { Link, useNavigate } from 'react-router-dom';
+import CustomerReview from '../Components/CustomerReview';
+import BrandsSlider from '../Components/BrandsSlider';
+import AppleShowcase from '../Components/Apple';
+import Footer from '../Components/Footer';
 
 const ShopLiteCart = () => {
-  const { cartItems, updateQuantity, removeFromCart } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
+  const navigate = useNavigate();
+
   const cartRef = useRef(null);
   const itemsRef = useRef([]);
   const totalRef = useRef(null);
@@ -35,158 +42,216 @@ const ShopLiteCart = () => {
       delay: 0.8,
       ease: 'power2.out',
     });
-  }, []);
+  });
 
   const handleQuantityChange = (id, action) => {
     updateQuantity(id, action);
-
-    const index = cartItems.findIndex((item) => item.id === id);
-    const inputElement = itemsRef.current[index]?.querySelector('.quantity-input');
-    if (inputElement) {
-      gsap.fromTo(inputElement,
+    
+    const index = cartItems.findIndex(item => item.id === id);
+    const quantityElement = itemsRef.current[index]?.querySelector('.quantity-value');
+    
+    if (quantityElement) {
+      gsap.fromTo(quantityElement,
         { scale: 1.2 },
-        {
-          scale: 1,
-          duration: 0.3,
-          ease: 'elastic.out(1, 0.5)'
-        }
+        { scale: 1, duration: 0.3, ease: 'elastic.out(1, 0.5)' }
       );
     }
   };
 
   const handleRemoveItem = (id) => {
-    const index = cartItems.findIndex((item) => item.id === id);
+    const index = cartItems.findIndex(item => item.id === id);
     const itemElement = itemsRef.current[index];
+    
     if (itemElement) {
       gsap.to(itemElement, {
         opacity: 0,
         x: -100,
         duration: 0.4,
         ease: 'power2.in',
-        onComplete: () => removeFromCart(id),
+        onComplete: () => removeFromCart(id)
       });
     } else {
       removeFromCart(id);
     }
   };
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const handleCheckout = () => {
+    const total = getCartTotal();
+    navigate(`/checkout?total=${total.toFixed(2)}`);
+  };
+
+  if (cartItems.length === 0) {
+    return (
+      <>
+        <PageHeader 
+          title="Shopping Cart"
+          previousPage="Shop" 
+          previousPageLink="/shop"
+          currentPage="Cart"
+        />
+        <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
+          <FiShoppingCart className="text-6xl text-gray-300 mb-4" />
+          <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">Your cart is empty</h2>
+          <p className="text-gray-500 mb-8 text-center">Add some items to your cart and they will appear here.</p>
+          <Link 
+            to="/shop" 
+            className="bg-[#FF6543] text-white px-8 py-3 rounded-lg hover:bg-[#ff4f29] transition-colors text-center w-full max-w-xs"
+          >
+            Continue Shopping
+          </Link>
+        </div>
+        <CustomerReview />
+        <BrandsSlider />
+        <AppleShowcase />
+        <Footer />
+      </>
+    );
+  }
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <PageHeader title="CART" previousPage="Shop" previousPageLink="/Shop" currentPage="Cart" />
-
-      <div ref={cartRef} className="max-w-[100rem] mx-auto rounded-2xl overflow-hidden">
-        <div className="p-4 sm:p-6 mt-6 sm:mt-10">
-          <div className="border-b border-gray-200 pb-6 sm:pb-10 mb-10 sm:mb-20">
-            <div className="hidden md:grid grid-cols-12 gap-4 mb-4 font-medium text-gray-600 uppercase text-xl">
-              <div className="col-span-5 md:col-span-4">Product</div>
-              <div className="col-span-4 text-center">Quantity</div>
-              <div className="col-span-3 text-right">Subtotal</div>
-            </div>
-
-            {cartItems.length === 0 ? (
-              <div className="text-center py-12">
-                <FiShoppingCart className="mx-auto h-12 w-12 text-gray-400" />
-                <h3 className="mt-2 text-lg font-medium text-gray-900">Your cart is empty</h3>
-                <p className="mt-1 text-gray-500">Start shopping to add items to your cart</p>
-              </div>
-            ) : (
-              cartItems.map((item, index) => (
-                <div
-                  key={item.id}
-                  ref={(el) => (itemsRef.current[index] = el)}
-                  className="cart-item grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 py-4 border-b border-gray-100"
-                >
-                  {/* Product Info */}
-                  <div className="col-span-5 md:col-span-4 flex flex-col sm:flex-row items-start sm:items-center">
-                    <div className="relative items-center flex h-32 sm:h-[14rem] w-full sm:w-[12rem] flex-shrink-0 overflow-hidden rounded-md border border-gray-200 sm:mr-4 mb-4 sm:mb-0">
-                      <img
-                        src={item.image || item.images?.[0]}
-                        alt={item.name}
-                        className="w-full h-[8rem] object-cover object-center"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-medium text-gray-900">{item.name}</h3>
-                      <p className="text-orange-500 text-base sm:text-lg font-bold">${item.price.toFixed(2)}</p>
-                    </div>
+    <>
+      <PageHeader 
+        title="Shopping Cart"
+        previousPage="Shop" 
+        previousPageLink="/shop"
+        currentPage="Cart"
+      />
+      <div ref={cartRef} className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-6">Shopping Cart ({cartItems.length})</h2>
+          
+          {/* Mobile view - stacked layout */}
+          <div className="sm:hidden space-y-4">
+            {cartItems.map((item, index) => (
+              <div
+                key={item.id}
+                ref={el => itemsRef.current[index] = el}
+                className="flex flex-col gap-4 pb-6 border-b last:border-0"
+              >
+                <div className="flex gap-4">
+                  <img
+                    src={item.IMG || item.images?.[0]}
+                    alt={item.name}
+                    className="w-20 h-20 object-cover rounded-lg"
+                  />
+                  <div className="flex-grow">
+                    <h3 className="font-semibold line-clamp-2">{item.name}</h3>
+                    <p className="text-[#FF6543] font-semibold">${item.price.toFixed(2)}</p>
                   </div>
-
-                  {/* Quantity Controls */}
-                  <div className="col-span-4 flex items-center justify-start sm:justify-center">
-                    <div className="flex items-center rounded-md">
-                      <button
-                        onClick={() => handleQuantityChange(item.id, 'dec')}
-                        className="px-3 py-1 text-gray-600 border-gray-300 border rounded-sm hover:bg-gray-100 transition-colors"
-                      >
-                        <FiMinus className="h-4 w-4" />
-                      </button>
-
-                      <span className="quantity-input w-12 text-center font-medium text-gray-800 m-4">
-                        {item.quantity}
-                      </span>
-
-                      <button
-                        onClick={() => handleQuantityChange(item.id, 'inc')}
-                        className="px-3 py-1 text-gray-600 hover:bg-orange-400 hover:text-white border border-gray-300 rounded-sm transition-colors"
-                      >
-                        <FiPlus className="h-4 w-4" />
-                      </button>
-                    </div>
+                </div>
+                
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-1">
+                    <button
+                      onClick={() => handleQuantityChange(item.id, 'dec')}
+                      className="p-1 hover:bg-gray-200 rounded"
+                    >
+                      <FiMinus size={16} />
+                    </button>
+                    <span className="quantity-value w-6 text-center">{item.quantity}</span>
+                    <button
+                      onClick={() => handleQuantityChange(item.id, 'inc')}
+                      className="p-1 hover:bg-gray-200 rounded"
+                    >
+                      <FiPlus size={16} />
+                    </button>
                   </div>
-
-                  {/* Subtotal and Remove */}
-                  <div className="col-span-3 flex items-center justify-between sm:justify-end">
-                    <p className="text-base sm:text-lg font-medium text-gray-900 text-right">
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
                     <button
                       onClick={() => handleRemoveItem(item.id)}
-                      className="ml-4 text-gray-400 hover:text-red-500 transition-colors"
-                      aria-label="Remove item"
+                      className="text-red-500 hover:text-red-600 p-1"
                     >
-                      <FiX className="h-5 w-5" />
+                      <FiX size={18} />
                     </button>
                   </div>
                 </div>
-              ))
-            )}
+              </div>
+            ))}
           </div>
-
-          {/* Totals */}
-          <div ref={totalRef} className="p-4 sm:p-6 rounded-lg">
-            <h2 className="text-xl sm:text-2xl font-medium text-gray-800 mb-4">CART TOTAL</h2>
-            <div className="space-y-2 mb-6">
-              <div className="flex justify-between sm:gap-[12rem]">
-                <span className="text-gray-600 text-xl sm:text-3xl">Subtotal</span>
-                <span className="font-medium text-lg sm:text-xl">${subtotal.toFixed(2)}</span>
+          
+          {/* Desktop view - table layout */}
+          <div className="hidden sm:block space-y-6">
+            {cartItems.map((item, index) => (
+              <div
+                key={item.id}
+                ref={el => itemsRef.current[index] = el}
+                className="flex items-center gap-6 pb-6 border-b last:border-0"
+              >
+                <img
+                  src={item.IMG || item.images?.[0]}
+                  alt={item.name}
+                  className="w-24 h-24 object-cover rounded-lg"
+                />
+                <div className="flex-grow">
+                  <h3 className="font-semibold">{item.name}</h3>
+                  <p className="text-[#FF6543] font-semibold">${item.price.toFixed(2)}</p>
+                </div>
+                <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-1">
+                  <button
+                    onClick={() => handleQuantityChange(item.id, 'dec')}
+                    className="p-2 hover:bg-gray-200 rounded"
+                  >
+                    <FiMinus />
+                  </button>
+                  <span className="quantity-value w-8 text-center">{item.quantity}</span>
+                  <button
+                    onClick={() => handleQuantityChange(item.id, 'inc')}
+                    className="p-2 hover:bg-gray-200 rounded"
+                  >
+                    <FiPlus />
+                  </button>
+                </div>
+                <div className="flex items-center gap-4">
+                  <p className="font-semibold w-20 text-right">${(item.price * item.quantity).toFixed(2)}</p>
+                  <button
+                    onClick={() => handleRemoveItem(item.id)}
+                    className="text-red-500 hover:text-red-600 p-2"
+                  >
+                    <FiX />
+                  </button>
+                </div>
               </div>
-              <div className="flex justify-between sm:gap-[15rem] pt-4 border-t border-gray-200">
-                <span className="text-xl sm:text-3xl text-gray-600">Total</span>
-                <span className="text-lg sm:text-xl font-bold text-orange-600">${subtotal.toFixed(2)}</span>
-              </div>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex flex-col items-start   gap-4 sm:gap-6 mt-6 sm:mt-10">
-              <button className="px-[] sm:w-auto bg-[#FF6543] hover:bg-orange-600 text-white font-medium py-3  sm:px-14 rounded-2xl flex items-center justify-center transition-colors">
-                <FiArrowLeft className="mr-2" />
-                Update Cart
-              </button>
-              <button className="w-full sm:w-auto bg-gray-300 text-black font-medium py-3 px-6 sm:px-14 rounded-2xl flex items-center justify-center transition-colors">
-                <FiArrowLeft className="mr-2" />
-                Continue Shopping
-              </button>
-              <button className="w-full sm:w-auto bg-[#FF6543] hover:bg-orange-700 text-white font-medium py-3 px-6 sm:px-14 rounded-2xl flex items-center justify-center transition-colors">
-                <FiCreditCard className="mr-2" />
-                Proceed to Checkout
-              </button>
-            </div>
+            ))}
           </div>
         </div>
+
+        <div ref={totalRef} className="mt-6 bg-white rounded-lg shadow-sm p-4 sm:p-6">
+          <h3 className="text-lg sm:text-xl font-semibold mb-4">Cart Summary</h3>
+          <div className="space-y-3">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Subtotal</span>
+              <span className="font-semibold">${getCartTotal().toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Shipping</span>
+              <span className="text-green-600">FREE</span>
+            </div>
+            <div className="flex justify-between pt-3 border-t border-gray-200">
+              <span className="text-lg font-bold">Total</span>
+              <span className="text-lg font-bold text-[#FF6543]">${getCartTotal().toFixed(2)}</span>
+            </div>
+          </div>
+          <button
+            onClick={handleCheckout}
+            className="w-full mt-6 bg-[#FF6543] text-white py-3 rounded-lg hover:bg-[#ff4f29] transition-colors font-medium"
+          >
+            Proceed to Checkout
+          </button>
+          <Link 
+            to="/shop" 
+            className="block w-full mt-3 text-center bg-white border border-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+          >
+            Continue Shopping
+          </Link>
+        </div>
       </div>
-    </div>
+      <CustomerReview />
+      <BrandsSlider />
+      <AppleShowcase />
+      <Footer />
+    </>
   );
 };
 

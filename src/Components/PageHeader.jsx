@@ -24,7 +24,7 @@ const PageHeader = ({ title, currentPage, previousPage, previousPageLink }) => {
   }, []);
 
   return (
-    <div ref={headerRef} className="w-full py-10 text-center mt-[7rem]">
+    <div ref={headerRef} className="w-full py-10 text-center mt-[5rem]">
       <h1 className="text-7xl font-light text-[#3f3f3f]">{title}</h1>
       <p className="mt-6 text-gray-600 text-xl">
         <Link to={previousPageLink} className="hover:text-[#FF6543] cursor-pointer">

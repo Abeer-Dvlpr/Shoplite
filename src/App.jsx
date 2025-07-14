@@ -7,7 +7,8 @@ import ProductPage from "./Pages/ProductDetails";
 import Checkout from "./Pages/Checkout";
 import ShopLiteCart from "./Pages/Cart";
 import Contact from "./Pages/Contact";
-
+import Blogs from "./Pages/Blogs";
+import BlogDetails from "./Pages/BlogDetails";
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/Product/:id" element={<ProductPage />} />
         <Route path="/Cart" element={<ShopLiteCart />}/>
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
       </Routes>
-
     </>
   );
 }

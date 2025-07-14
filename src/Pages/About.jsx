@@ -11,7 +11,9 @@ import AppleShowcase from "../Components/Apple";
 function About() {
   return (
     <>
+    <div>
       <PageHeader title="ABOUT US" previousPage="HOME" previousPageLink="/" currentPage="ABOUT" />
+    </div>
       <div className="mt-[5rem]">
         <Services />
       </div>

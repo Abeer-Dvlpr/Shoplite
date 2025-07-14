@@ -15,7 +15,7 @@ import HeroSlider from "../Components/HeroSlider";
 function Home() {
   return (
     <>
-      <div className="mb-[5rem] mt-[5rem]">
+      <div className="mb-[5rem] mt-[3rem]">
         <HeroSlider />
       </div>
       <Services />

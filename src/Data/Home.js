@@ -106,6 +106,28 @@ const Hproduct = [
       weight: "6.33"
     },
     reviews: []
+  },
+  {
+    id: "Monitor",
+    name: "Monitor HD",
+    price: 2300,
+    stock: 4,
+    IMG: "/Images/ShopIMG/Monitor.png",
+    images: ["/Images/ShopIMG/Monitor.png", "/Images/ShopIMG/Monitor.png", "/Images/ShopIMG/Monitor.png"],
+    colors: ["White", "Blue", "Gold"],
+    sizes: ["128GB", "256GB", "512GB"],
+    sku: "1226",
+    category: "Phone",
+    tags: ["Powerful", "Stylish"],
+    description: "Cutting-edge smartphone with revolutionary performance upgrades.",
+    additional_information: {
+      name: "Dimensions",
+      height: "6.33",
+      width: "6.33",
+      depth: "6.33",
+      weight: "6.33"
+    },
+    reviews: []
   }
 ];
 

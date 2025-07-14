@@ -68,28 +68,28 @@ const Contact = () => {
             <input
               type="email"
               placeholder="Write your email here *"
-              className="w-1/2 p-3 rounded-md text-gray-600"
+              className="w-full sm:w-1/2 p-3 rounded-md text-gray-600"
             />
           </div>
 
           <input
             type="text"
             placeholder="Phone number"
-            className="w-full p-3 rounded-md text-gray-600"
+            className="w-full p-3 rounded-md text-gray-600 touch-friendly"
           />
 
           <input
             type="text"
             placeholder="Write your subject here"
-            className="w-full p-3 rounded-md text-gray-600"
+            className="w-full p-3 rounded-md text-gray-600 touch-friendly"
           />
 
           <textarea
             placeholder="Write your message here *"
-            className="w-full p-3 rounded-md text-gray-600 h-32 border border-gray-400"
+            className="w-full p-3 rounded-md text-gray-600 h-32 border border-gray-400 touch-friendly"
           ></textarea>
 
-          <button className="bg-[#ff5b3d] px-16 py-3 text-white rounded-xl mt-2">
+          <button className="bg-[#ff5b3d] px-8 sm:px-16 py-3 text-white rounded-xl mt-2 w-full sm:w-auto touch-friendly hover:bg-[#e04d32] transition-colors">
             SUBMIT
           </button>
         </div>
